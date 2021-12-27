@@ -1,14 +1,19 @@
 from sys import stdin
 lines = stdin.read().splitlines()
 N = int(lines[0])
-dfs = [[0 for _ in range(N)] for _ in range(N)]
+dfs = [[False]*N for _ in range(N)]
 
 for i in range(2, int(lines[1])+2):
     x, y = [int(x) for x in lines[i].split()]
-    dfs[x-1][y-1] += 1
-    dfs[y-1][x-1] += 1
+    dfs[x-1][y-1] = True
+    dfs[y-1][x-1] = True
 
-output = list(range(N))
+output = [False] * N
+def search(i):
+    output[i] = True
+    for ind, val in enumerate(dfs[i]):
+        if val and not output[ind]:
+            search(ind)
 
-import numpy as np
-print(np.array(dfs))
+search(0)
+print(sum(output[1:]))
