@@ -6,7 +6,6 @@ count = 1
 last = nums[0][1]
 for n in nums[1:]:
     if n[0] >= last:
-        print(n)
         count += 1
         last = n[1]
 
