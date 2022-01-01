@@ -1,5 +1,7 @@
 from sys import stdin
 from heapq import heapify, heappush, heappop
+import time
+time.sleep(3)
 
 
 for _ in range(int(input())):
@@ -8,6 +10,8 @@ for _ in range(int(input())):
     heapify(max_h)
     heapify(min_h)
     for _ in range(int(input())):
+        print(max_h)
+        print(min_h)
         cmd, num = input().split()
         num = int(num)
         if cmd == 'I':
